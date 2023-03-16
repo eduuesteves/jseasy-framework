@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap" rel="stylesheet">
+
+    <title>JSEasy</title>
+
+</head>
+<body>
+    <header>
+        <h1>JSEasy</h1>
+        <p>Versão 2.1 Beta</p>
+        <strong class="important">ESTE SITE FOI TODO ESTILIZADO COM O FRAMEWORK JSEASY</strong>
+    </header>
+    <main>
+        <img src="./assets/gradient.png" alt="Gradient" class="image" />
+        <section class="description">
+            <p>Este é um framework beta que tem por objetivo auxiliar na estilização de suas páginas web.
+                Nosso lema é:</p>
+            <li>Praticidade;</li>
+            <li>Facilidade;</li>
+            <li>Leveza.</li>
+            <p>Continue lendo a documentação para descobrir como é fácil sua manipulação.</p>
+        </section>
+        <div class="steps">
+            <p class="button"><strong>1º passo:</strong> Acessar o link Open Source desse framework: <a href="https://github.com/eduuesteves/jseasy-framework"><button>Click me!</button></a></p>
+            <p><strong>2º Passo:</strong> Escrever seu código HTML</p>
+            <p><strong>3º Passo:</strong> Criar um arquivo .js e importar a função tag() e estilizar seu site</p>
+            <strong>E PRONTO!</strong>
+            <p>Observações:</p>
+            <div class="style">
+            <div class="card">
+            <p>Não recomendamos que faça o reset das estilizações usando <strong>*</strong>, igual o exemplo abaixo:</p>
+            <code>
+                * { margin: 0; padding: 0; }
+            </code>
+            </div>
+            <div class="card">
+            <p>Recomendamos efetuar tal configuração usando <strong>body</strong>, conforme o exemplo abaixo:</p>
+            <code>
+                body { margin: 0; padding: 0; }
+            </code>
+        </div>
+        </div>
+        </div>
+        
+        <hr />
+        <img src="./assets/house.png" alt="House" class="image" />
+        <hr />
+        <section class="details">
+            <h2>Bora codar!</h2>
+            <p>Recomendamos criar um arquivo project.js</p>
+            <p>Logo abaixo, deixei o código javascript que utilizamos para estilizar essa página WEB:</p>
+
+            <div class="card-code">
+                <p>Começamos importando a biblioteca:</p>
+                <code class="code-color">
+                    import { tag as s, responsive as r } from "./jseasy.js";
+                </code>
+                <br />
+                <br />
+                <p>Para ficar mais fácil de identicar a tag, por padrão criamos um comentário mostrando 
+                a que <strong>tag, .class, #id</strong> a função abaixo se refere:</p>
+                <code class="code-color">
+                    /** ---- Body */ 
+                </code>
+                <br />
+                <br />
+                <p>Primeiro definimos qual <strong>tag</strong>, <strong>.class</strong> ou <strong>#id</strong> será estilizada. No exemplo abaixo, está sendo utilizada a tag <strong>body</strong>.</p>
+                <p>Seu código css, precisa estar dentro do par de crase <strong>` ...código `</strong>:</p>
+                <code class="code-color">
+                    s("body", `<br />
+                    &emsp;&emsp;margin: 0;<br />
+                    &emsp;&emsp;padding: 0;<br />
+                    &emsp;&emsp;font-family: "Poppins", cursive;<br />
+                    `)
+                </code>
+                <br />
+                <br />
+                <p>Esse é exemplo beta, de uma função de estilização para tornar a página responsiva.</p>
+                <code class="code-color">
+                    r(`<br />
+                    &emsp;&emsp;@media screen and (max-width: 900px) {<br />
+                    &emsp;&emsp;&emsp;main {<br />
+                    &emsp;&emsp;&emsp;&emsp;margin: 1rem;<br />
+                    &emsp;&emsp;&emsp;&emsp;width: calc(100% - 2rem);<br />
+                    &emsp;&emsp;&emsp;}<br />
+                    &emsp;&emsp;}<br />
+                    `)
+                </code>
+
+</div>
+<pre class="pre">
+    <code>
+
+import { 
+    tag as s, 
+    responsive as r 
+} from "./jseasy.js";
+
+/** ---- Body */ 
+s("body", `
+margin: 0;
+padding: 0;
+font-family: "Poppins", cursive;
+`)
+
+/** --- Header */
+s("header", `
+    padding: 2rem 0;
+    background: #7209b7;
+    color: white;
+    text-align: center;
+`)
+
+/** ---- H1 */
+s("h1", `
+    font-size: 36px;
+`)
+
+/** ---- Important */
+s(".important", `
+    padding: 5rem;
+`)
+
+/** ---- Main */
+s("main", `
+    margin: 50px auto;
+    width: 900px;
+`)
+
+r(`
+   @media screen and (max-width: 900px) {
+        main {
+            margin: 1rem;
+            width: calc(100% - 2rem);
+        }
+   }
+`)
+
+/** ---- Button */
+s("button", `
+    padding: .5rem 1rem;
+    font-weight: bold;
+    border: none;
+    transition: linear .3s background;
+`)
+
+s("button:hover", `
+    background: #7209b7;
+    color: #fff;
+    box-shadow: 3px 3px 0 #fff;
+    cursor: pointer;
+`)
+
+/** --- .button */
+s(".button", `
+    display: flex;
+    align-items: center;
+    gap: 7px;
+`)
+
+r(`
+   @media screen and (max-width: 900px) {
+        .button {
+            flex-wrap: wrap;
+            gap: 0;
+        }
+   }
+`)
+
+/** ---- A */    
+s("a", `
+    text-decoration: none;
+`)
+
+/** ---- Style */
+s(".style", `
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+`)
+
+/** ---- Card */
+s(".card", `
+    width: min(425px, 100%);
+    background: #999;
+    border-radius: 10px;
+    padding: 10px;
+    color: white
+`)
+
+/** ---- Details */
+s(".details", `
+    width: 100%;
+`)
+
+/** ---- Image */
+s("img", `
+    max-width: 100%;
+    border-radius: 20px;
+    margin: 1rem 0;
+`)
+
+/** ---- .card-code */
+s(".card-code", `
+    background: #888;
+    padding: .5rem;
+    border-radius: 10px
+`)
+
+/** ---- .code-color
+s(".code-color", `
+    background: #777;
+`)
+
+r(`
+   @media screen and (max-width: 660px) {
+        .pre {
+            font-size: 14px;
+        }
+   }
+
+   @media screen and (max-width: 470px) {
+        .pre {
+            font-size: 12px;
+        }
+   }
+`)
+
+                </code>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="scripts/project.js" defer></script>
+</body>
+</html>
